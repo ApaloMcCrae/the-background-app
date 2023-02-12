@@ -34,10 +34,7 @@ function App() {
                 }}
                 key="color-picker-button"
               >
-                <img
-                  src="/src/public/assets/color-wheel.png"
-                  alt="color wheel"
-                />
+                <img src="/assets/color-wheel.png" alt="color wheel" />
               </motion.button>
             ) : (
               <></>
