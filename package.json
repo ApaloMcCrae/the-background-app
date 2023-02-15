@@ -1,6 +1,6 @@
 {
   "name": "bg-color",
-  "description": "This is an app to display a full screen color on an unused monitor.",
+  "description": "This is an app to display a full screen color.",
   "version": "0.1.0",
   "private": true,
   "author": {

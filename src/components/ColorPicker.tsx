@@ -1,7 +1,7 @@
 import { ColorPicker as MantineColorPicker } from '@mantine/core';
 import { motion } from 'framer-motion';
-import invert from 'invert-color';
 import { DynamicHeroIcon } from './DynamicHeroIcon';
+import invert from 'invert-color';
 
 export function ColorPicker({
   color,
