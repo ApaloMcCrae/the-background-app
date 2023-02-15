@@ -28,6 +28,7 @@ specifiers:
   eslint-plugin-tailwindcss: ^3.8.2
   framer-motion: ^9.0.2
   happy-dom: ^8.2.4
+  invert-color: ^2.0.0
   postcss: ^8.4.21
   prettier: 2.8.3
   react: ^18.2.0
@@ -44,6 +45,7 @@ dependencies:
   '@mantine/core': 5.10.3_ylq7zkqz7uvrjy7wd5cseqyxu4
   '@mantine/hooks': 5.10.3_react@18.2.0
   framer-motion: 9.0.2_biqbaboplfbrettd7655fr4n2y
+  invert-color: 2.0.0
   react: 18.2.0
   react-dom: 18.2.0_react@18.2.0
 
@@ -3586,6 +3588,10 @@ packages:
       has: 1.0.3
       side-channel: 1.0.4
     dev: true
+
+  /invert-color/2.0.0:
+    resolution: {integrity: sha512-9s6IATlhOAr0/0MPUpLdMpk81ixIu8IqwPwORssXBauFT/4ff/iyEOcojd0UYuPwkDbJvL1+blIZGhqVIaAm5Q==}
+    dev: false
 
   /is-arguments/1.1.1:
     resolution: {integrity: sha512-8Q7EARjzEnKpt/PCD7e1cgUS0a6X8u5tdSiMqXhojOdoV9TsMsiO+9VLC5vAmO8N7/GmXn7yjR8qnA6bVAEzfA==}
