@@ -1,7 +1,7 @@
 import { ColorPicker as MantineColorPicker } from '@mantine/core';
 import { motion } from 'framer-motion';
-import { DynamicHeroIcon } from './DynamicHeroIcon';
 import invert from 'invert-color';
+import { DynamicHeroIcon } from './DynamicHeroIcon';
 
 export function ColorPicker({
   color,
@@ -29,6 +29,7 @@ export function ColorPicker({
         onChange={setColor}
         swatches={['#000000', '#ffffff', '#fab005', '#fd7e14']}
       />
+      {/* Note: We have to use HEX colors, for this invert function to work */}
       <motion.button
         whileTap={{ scale: 0.8 }}
         whileHover={{ scale: 1.2 }}

@@ -1,16 +1,16 @@
-import { useEffect, useState } from 'react';
 import { MantineProvider } from '@mantine/core';
+import { useEffect, useState } from 'react';
 
-import { AnimatePresence, motion } from 'framer-motion';
-import { ColorPicker } from './ColorPicker';
 import { useIdle, useLocalStorage } from '@mantine/hooks';
+import { AnimatePresence, motion } from 'framer-motion';
 import { useWindowHeight } from '../utils/useWindowHeight';
+import { ColorPicker } from './ColorPicker';
 import { ColorWheelButton } from './ColorWheelButton';
 
 function App() {
   const [localStorageColor, setLocalStorageColor] = useLocalStorage({
     key: 'bg-color-value',
-    defaultValue: 'rgba(0, 0, 0, 0.9)',
+    defaultValue: '#000000',
   });
   const [color, setColor] = useState(localStorageColor);
 
