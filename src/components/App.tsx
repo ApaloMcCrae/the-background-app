@@ -6,6 +6,7 @@ import { AnimatePresence, motion } from 'framer-motion';
 import { useWindowHeight } from '../utils/useWindowHeight';
 import { ColorPicker } from './ColorPicker';
 import { ColorWheelButton } from './ColorWheelButton';
+import { Analytics } from '@vercel/analytics/react';
 
 function App() {
   const [localStorageColor, setLocalStorageColor] = useLocalStorage({
@@ -58,6 +59,7 @@ function App() {
           </AnimatePresence>
         </div>
       </motion.div>
+      <Analytics />
     </MantineProvider>
   );
 }
