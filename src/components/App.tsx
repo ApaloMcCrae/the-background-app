@@ -32,9 +32,9 @@ function App() {
   }, [localStorageColor]);
 
   useHotkeys([
-    ["B", () => setColor("#000000")],
-    ["W", () => setColor("#ffffff")],
-    ["Y", () => setColor("#ffc500")],
+    ["B", () => handleColorChange("#000000")],
+    ["W", () => handleColorChange("#ffffff")],
+    ["Y", () => handleColorChange("#ffc500")],
     ["Escape", () => setShowColorPicker(false)],
     ["Space", () => setShowColorPicker(!showColorPicker)],
   ]);
