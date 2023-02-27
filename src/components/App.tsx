@@ -1,17 +1,17 @@
-import { MantineProvider } from '@mantine/core';
-import { useEffect, useState } from 'react';
+import { MantineProvider } from "@mantine/core";
+import { useEffect, useState } from "react";
 
-import { useIdle, useLocalStorage } from '@mantine/hooks';
-import { AnimatePresence, motion } from 'framer-motion';
-import { useWindowHeight } from '../utils/useWindowHeight';
-import { ColorPicker } from './ColorPicker';
-import { ColorWheelButton } from './ColorWheelButton';
-import { Analytics } from '@vercel/analytics/react';
+import { useIdle, useLocalStorage, useHotkeys } from "@mantine/hooks";
+import { AnimatePresence, motion } from "framer-motion";
+import { useWindowHeight } from "../utils/useWindowHeight";
+import { ColorPicker } from "./ColorPicker";
+import { ColorWheelButton } from "./ColorWheelButton";
+import { Analytics } from "@vercel/analytics/react";
 
 function App() {
   const [localStorageColor, setLocalStorageColor] = useLocalStorage({
-    key: 'bg-color-value',
-    defaultValue: '#000000',
+    key: "bg-color-value",
+    defaultValue: "#000000",
   });
   const [color, setColor] = useState(localStorageColor);
 
@@ -30,12 +30,21 @@ function App() {
       setColor(localStorageColor);
     }
   }, [localStorageColor]);
+
+  useHotkeys([
+    ["B", () => setColor("#000000")],
+    ["W", () => setColor("#ffffff")],
+    ["Y", () => setColor("#ffc500")],
+    ["Escape", () => setShowColorPicker(false)],
+    ["Space", () => setShowColorPicker(!showColorPicker)],
+  ]);
+
   return (
     <MantineProvider withGlobalStyles withNormalizeCSS>
       <motion.div
         className="relative h-screen w-screen"
         style={{ background: color }}
-        initial={{ height: '100vh' }}
+        initial={{ height: "100vh" }}
         animate={{ height: windowHeight }}
         transition={{ duration: 0.3 }}
       >
