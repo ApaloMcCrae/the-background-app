@@ -55,7 +55,7 @@ function App() {
     const colorAlreadySaved = swatches.some((swatch) => swatch.color === color);
     if (colorAlreadySaved) {
       notifications.show({
-        message: "👈 This color is already saved, ya goofball!",
+        message: "👈 That color is already saved, ya goof",
         autoClose: 3000,
       });
       return;
