@@ -1,4 +1,4 @@
-import { MantineProvider, Kbd } from "@mantine/core";
+import { Kbd, MantineProvider, Popover, Tabs } from "@mantine/core";
 import { useState } from "react";
 
 import {
@@ -7,12 +7,12 @@ import {
   useIdle,
   useLocalStorage,
 } from "@mantine/hooks";
+import { Notifications, notifications } from "@mantine/notifications";
 import { Analytics } from "@vercel/analytics/react";
 import { AnimatePresence, motion } from "framer-motion";
 import { useWindowHeight } from "../utils/useWindowHeight";
 import { ColorPicker } from "./ColorPicker";
 import { ColorWheelButton } from "./ColorWheelButton";
-import { Notifications, notifications } from "@mantine/notifications";
 export interface SwatchType {
   color: string;
   keyboardShortcut: string;
@@ -36,6 +36,8 @@ function App() {
   });
   const [showColorPicker, setShowColorPicker] = useState(false);
   const [hoveringColorWheel, setHoveringColorWheel] = useState(false);
+  const [showTipJar, setShowTipJar] = useState(false);
+  const [numberOfColorsChanged, setNumberOfColorsChanged] = useState(0);
 
   //Hooks
   const { windowHeight } = useWindowHeight();
@@ -44,9 +46,13 @@ function App() {
   //Handlers
   function handleColorChange(color: string) {
     //Filter out any empty strings
+    setNumberOfColorsChanged((prev) => prev + 1);
     if (color) {
       setLocalStorageColor(color);
       setHoveringColorWheel(false);
+      if (numberOfColorsChanged > 3) {
+        setShowTipJar(true);
+      }
     }
   }
 
@@ -82,6 +88,7 @@ function App() {
     () => handleColorChange(swatch.color),
   ]);
 
+  //Add the swatches, escape, and spacebar to the hotkeys
   useHotkeys([
     ...swatchArray,
     ["Escape", () => setShowColorPicker(false)],
@@ -140,6 +147,65 @@ function App() {
             )}
           </AnimatePresence>
         </div>
+        {/* Donation popover */}
+        {!idle && showTipJar && (
+          <Popover
+            position="top"
+            withArrow
+            shadow="md"
+            radius={"lg"}
+            onClose={() => setShowTipJar(false)}
+          >
+            <Popover.Target>
+              <motion.button
+                className="absolute bottom-6 right-10 text-5xl outline-none"
+                initial={{ opacity: 0, scale: 0.8 }}
+                animate={{ opacity: 1, scale: 1 }}
+                exit={{ opacity: 0, scale: 0.8 }}
+                whileHover={{ scale: 1.3, rotate: [-5, 5, -15, 15, -5, 5] }}
+                whileTap={{ scale: 0.9 }}
+              >
+                👋
+              </motion.button>
+            </Popover.Target>
+            <Popover.Dropdown>
+              <div className="w-full text-center mb-6 mt-2">
+                <h2 className="font-extrabold font-rounded text-4xl text-transparent bg-clip-text bg-gradient-to-tr from-blue-800 to-cyan-500">
+                  Tip Jar
+                </h2>
+                <small className="font-semibold text-gray-700">
+                  Let's keep this app free forever 🤙
+                </small>
+              </div>
+              <Tabs
+                variant="pills"
+                defaultValue="paypal"
+                style={{ width: "100%" }}
+              >
+                <Tabs.List position="center">
+                  <Tabs.Tab value="paypal" className="font-bold">
+                    PayPal
+                  </Tabs.Tab>
+                  <Tabs.Tab value="venmo" className="font-bold">
+                    Venmo
+                  </Tabs.Tab>
+                </Tabs.List>
+                <Tabs.Panel value="paypal" pt="xs">
+                  <motion.img
+                    src="/assets/paypal-qr.jpg"
+                    className="w-[300px] h-[300px]"
+                  />
+                </Tabs.Panel>
+                <Tabs.Panel value="venmo" pt="xs">
+                  <motion.img
+                    src="/assets/venmo-qr.jpg"
+                    className="w-[300px] h-[300px]"
+                  />
+                </Tabs.Panel>
+              </Tabs>
+            </Popover.Dropdown>
+          </Popover>
+        )}
       </motion.div>
       <Analytics />
     </MantineProvider>

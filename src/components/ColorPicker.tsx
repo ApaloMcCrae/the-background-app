@@ -107,11 +107,12 @@ export function ColorPicker({
           </motion.div>
         ))}
       </div>
-      <div className="-top-10 -right-10 absolute flex gap-y-2 flex-col">
+
+      <div className="-top-8 -right-8 absolute flex gap-y-2 flex-col w-8">
         <motion.button
           whileTap={{ scale: 0.8 }}
           whileHover={{ scale: 1.2 }}
-          className=" w-8 h-8"
+          className=" w-8 h-8 rounded-full"
           onClick={() => setShow(false)}
           style={{ color: invert(color), backgroundColor: color }}
           onHoverStart={() => setHoveringEscape(true)}
