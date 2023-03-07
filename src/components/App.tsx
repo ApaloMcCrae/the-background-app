@@ -164,7 +164,6 @@ function App() {
                 exit={{ opacity: 0, scale: 0.8 }}
                 whileHover={{ scale: 1.3, rotate: [-5, 5, -15, 15, -5, 5] }}
                 whileTap={{ scale: 0.9 }}
-                onHoverEnd={() => setShowTipJar(false)}
               >
                 👋
               </motion.button>
