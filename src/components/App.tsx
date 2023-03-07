@@ -164,13 +164,14 @@ function App() {
                 exit={{ opacity: 0, scale: 0.8 }}
                 whileHover={{ scale: 1.3, rotate: [-5, 5, -15, 15, -5, 5] }}
                 whileTap={{ scale: 0.9 }}
+                onHoverEnd={() => setShowTipJar(false)}
               >
                 👋
               </motion.button>
             </Popover.Target>
             <Popover.Dropdown>
               <div className="w-full text-center mb-6 mt-2">
-                <h2 className="font-extrabold font-rounded text-4xl text-transparent bg-clip-text bg-gradient-to-tr from-blue-800 to-cyan-500">
+                <h2 className="font-extrabold font-rounded text-lg lg:text-2xl text-transparent bg-clip-text bg-gradient-to-tr from-blue-800 to-cyan-500">
                   Tip Jar
                 </h2>
                 <small className="font-semibold text-gray-700">
