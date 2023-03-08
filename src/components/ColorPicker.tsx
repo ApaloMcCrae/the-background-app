@@ -65,7 +65,7 @@ export function ColorPicker({
                     initial={{ scale: 0.8 }}
                     animate={{ scale: 1 }}
                     exit={{ scale: 0.8 }}
-                    className="-top-3 -left-2 absolute w-6 h-6 rounded-full"
+                    className="-top-3 -right-2 absolute w-6 h-6 rounded-full"
                     onClick={() => handleDeleteColor(index)}
                     style={{ color: invert(color), backgroundColor: color }}
                     onHoverStart={() => setShowDeleteOnSwatchIndex(index)}
