@@ -42,6 +42,7 @@ function App() {
   //Hooks
   const { windowHeight } = useWindowHeight();
   const idle = useIdle(2000);
+  const tipJarIdle = useIdle(5000);
 
   //Handlers
   function handleColorChange(color: string) {
@@ -148,7 +149,7 @@ function App() {
           </AnimatePresence>
         </div>
         {/* Donation popover */}
-        {!idle && showTipJar && (
+        {showTipJar && (
           <Popover
             position="top"
             withArrow
@@ -156,18 +157,20 @@ function App() {
             radius={"lg"}
             onClose={() => setShowTipJar(false)}
           >
-            <Popover.Target>
-              <motion.button
-                className="absolute bottom-6 right-10 text-4xl outline-none z-10"
-                initial={{ opacity: 0, scale: 0.8 }}
-                animate={{ opacity: 1, scale: 1 }}
-                exit={{ opacity: 0, scale: 0.8 }}
-                whileHover={{ scale: 1.3, rotate: [-5, 5, -15, 15, -5, 5] }}
-                whileTap={{ scale: 0.9 }}
-              >
-                👋
-              </motion.button>
-            </Popover.Target>
+            {!tipJarIdle && (
+              <Popover.Target>
+                <motion.button
+                  className="absolute bottom-6 right-10 text-4xl outline-none z-10"
+                  initial={{ opacity: 0, scale: 0.8 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  exit={{ opacity: 0, scale: 0.8 }}
+                  whileHover={{ scale: 1.3, rotate: [-5, 5, -15, 15, -5, 5] }}
+                  whileTap={{ scale: 0.9 }}
+                >
+                  👋
+                </motion.button>
+              </Popover.Target>
+            )}
             <Popover.Dropdown>
               <div className="w-full text-center mb-6 mt-2">
                 <h2 className="font-extrabold font-rounded text-lg lg:text-2xl text-transparent bg-clip-text bg-gradient-to-tr from-blue-800 to-cyan-500">
@@ -200,6 +203,7 @@ function App() {
                   <motion.img
                     src="/assets/venmo-qr.jpg"
                     className="w-[300px] h-[300px]"
+                    onHoverStart={() => setShowTipJar(true)}
                   />
                 </Tabs.Panel>
               </Tabs>
@@ -207,7 +211,7 @@ function App() {
           </Popover>
         )}
         <motion.div
-          className="absolute bottom-0 right-0 w-40 h-40 z-0"
+          className="absolute bottom-0 right-0 w-10 h-10 lg:w-40 lg:h-40 z-0"
           onHoverStart={() => setShowTipJar(true)}
         />
       </motion.div>
