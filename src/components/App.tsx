@@ -158,7 +158,7 @@ function App() {
           >
             <Popover.Target>
               <motion.button
-                className="absolute bottom-6 right-10 text-5xl outline-none"
+                className="absolute bottom-6 right-10 text-4xl outline-none z-10"
                 initial={{ opacity: 0, scale: 0.8 }}
                 animate={{ opacity: 1, scale: 1 }}
                 exit={{ opacity: 0, scale: 0.8 }}
@@ -206,6 +206,10 @@ function App() {
             </Popover.Dropdown>
           </Popover>
         )}
+        <motion.div
+          className="absolute bottom-0 right-0 w-40 h-40 z-0"
+          onHoverStart={() => setShowTipJar(true)}
+        />
       </motion.div>
       <Analytics />
     </MantineProvider>
