@@ -103,8 +103,8 @@ function App() {
       withNormalizeCSS
     >
       <Notifications />
-      <motion.div
-        className="relative h-screen w-screen"
+      <motion.main
+        className="relative overflow-hidden"
         style={{ background: localStorageColor }}
         initial={{ height: "100vh" }}
         animate={{ height: windowHeight }}
@@ -214,7 +214,7 @@ function App() {
           className="absolute bottom-0 right-0 w-10 h-10 lg:w-40 lg:h-40 z-0"
           onHoverStart={() => setShowTipJar(true)}
         />
-      </motion.div>
+      </motion.main>
       <Analytics />
     </MantineProvider>
   );
