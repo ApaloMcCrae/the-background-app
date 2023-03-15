@@ -45,7 +45,7 @@ export function ColorPicker({
                 <motion.button
                   style={{
                     backgroundColor: swatchColor,
-                    color: invert(swatchColor),
+                    color: invert(swatchColor, true),
                   }}
                   className="p-2 font-extrabold text-2xl rounded-lg shadow-lg w-12 h-12 flex items-center justify-center border-2 border-black/10"
                   whileHover={{ scale: 1.2 }}
@@ -54,7 +54,7 @@ export function ColorPicker({
                   onHoverStart={() => setShowDeleteOnSwatchIndex(index)}
                   onHoverEnd={() => setShowDeleteOnSwatchIndex(-1)}
                 >
-                  <span className="saturate-0 opacity-75 font-rounded letter-stroke">
+                  <span className="font-rounded letter-stroke">
                     {keyboardShortcut}
                   </span>
                 </motion.button>
@@ -67,7 +67,10 @@ export function ColorPicker({
                     exit={{ scale: 0.8 }}
                     className="-top-3 -right-2 absolute w-6 h-6 rounded-full"
                     onClick={() => handleDeleteColor(index)}
-                    style={{ color: invert(color), backgroundColor: color }}
+                    style={{
+                      color: invert(color, true),
+                      backgroundColor: color,
+                    }}
                     onHoverStart={() => setShowDeleteOnSwatchIndex(index)}
                     onHoverEnd={() => setShowDeleteOnSwatchIndex(-1)}
                   >
@@ -82,7 +85,7 @@ export function ColorPicker({
                   {swatchColor === color && (
                     <motion.div
                       className="w-2/4 h-2 rounded-full mt-2 mx-auto saturate-0 contrast-200"
-                      style={{ backgroundColor: invert(color) }}
+                      style={{ backgroundColor: invert(color, true) }}
                       layoutId="color-picker-indicator"
                     />
                   )}
@@ -92,7 +95,7 @@ export function ColorPicker({
               <motion.button
                 className="p-2 font-bold text-2xl rounded-lg shadow-lg w-12 h-12 flex items-center justify-center border-2 border-black/10"
                 style={{
-                  color: invert(color),
+                  color: invert(color, true),
                 }}
                 whileHover={{ scale: 1.2 }}
                 whileTap={{ scale: 0.9 }}
@@ -114,7 +117,7 @@ export function ColorPicker({
           whileHover={{ scale: 1.2 }}
           className=" w-8 h-8 rounded-full"
           onClick={() => setShow(false)}
-          style={{ color: invert(color), backgroundColor: color }}
+          style={{ color: invert(color, true), backgroundColor: color }}
           onHoverStart={() => setHoveringEscape(true)}
           onHoverEnd={() => setHoveringEscape(false)}
         >
