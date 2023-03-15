@@ -1,12 +1,12 @@
-![reactjs-vite-tailwindcss-boilerplate](https://user-images.githubusercontent.com/16243531/217138979-b854309c-4742-4275-a705-f9fec5158217.jpg)
+![OpenGraph_BackgroundApp3](https://user-images.githubusercontent.com/11333770/225354389-e5be81ac-589c-407d-8c6b-d89b009f71b3.png)
 
-# React Tailwindcss Boilerplate build with Vite
+# The Background App
 
-This is a boilerplate build with Vite, React 18, TypeScript, Vitest, Testing Library, TailwindCSS 3, Eslint and Prettier.
+An app to set your extra monitors to any color you want. Save swatches, syncronize multiple screens, and much more to come. Check it out at https://thebackground.app
 
 ## What is inside?
 
-This project uses many tools like:
+Built with:
 
 - [Vite](https://vitejs.dev)
 - [ReactJS](https://reactjs.org)
